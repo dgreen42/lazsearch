@@ -1,5 +1,5 @@
 use colored::Colorize;
-use std::{env, error::Error, fs::File, io::BufWriter, io::Write, path::PathBuf};
+use std::{env, path::PathBuf};
 
 fn main() {
     let search = env::args().nth(1).expect("Enter search");
