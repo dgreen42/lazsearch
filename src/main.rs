@@ -15,7 +15,7 @@ fn search_dir(dir: &str, search: &str) -> Option<String> {
     }
 }
 
-fn nothing() {}
+fn do_nothing() {}
 
 fn quick_search(top_dir: &PathBuf, search: &str) {
     //println!("{:?}", top_dir);
@@ -23,7 +23,7 @@ fn quick_search(top_dir: &PathBuf, search: &str) {
         let result = search_dir(top_dir.as_path().to_str().unwrap(), &search);
         match result {
             Some(..) => println!("{:?}", result.unwrap()),
-            None => nothing(),
+            None => do_nothing(),
         }
     } else {
         for one_down in top_dir.read_dir().unwrap() {
