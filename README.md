@@ -4,6 +4,6 @@ recursive sesrch algo used to find existing directories of files on system
 
 Usage: lazseach [search]
 
- search: any valid string
+**NOTE** Do not run from root with sudo or it will go into and infinite loop
 
  
