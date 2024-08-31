@@ -17,6 +17,7 @@ fn search_dir(dir: &str, search: &str) -> Option<String> {
     }
 }
 
+// do absolutely nothing cause why would you want to print something if there is no match?
 fn do_nothing() {}
 
 fn quick_search(top_dir: &PathBuf, search: &str) {
