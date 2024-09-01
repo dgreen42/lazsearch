@@ -1,21 +1,12 @@
 use colored::Colorize;
 use std::{env, path::PathBuf, thread};
 
-fn main() {
-    let search_pat = env::args().nth(1).expect("Enter search");
-    let top_dir = env::current_dir().expect("Directory not found");
-    quick_search(&top_dir, &search_pat);
-    println!("{}", "Done!".green());
-}
 mod search {
     use std::path::PathBuf;
+
     pub struct Searcher {
         pub directory: String,
         pub search: String,
-    }
-    pub enum Recurse {
-        Base,
-        Continue(Box<Searcher>),
     }
     impl Searcher {
         pub fn search(&self) -> Option<String> {
@@ -28,6 +19,7 @@ mod search {
     }
     pub fn do_nothing() {}
 }
+
 fn quick_search(top_dir: &PathBuf, search: &str) {
     use search::*;
     let top_dir_s = top_dir.as_path().to_str().unwrap().to_string();
@@ -65,4 +57,11 @@ fn quick_search(top_dir: &PathBuf, search: &str) {
             }
         }
     }
+}
+
+fn main() {
+    let search_pat = env::args().nth(1).expect("Enter search");
+    let top_dir = env::current_dir().expect("Directory not found");
+    quick_search(&top_dir, &search_pat);
+    println!("{}", "Done!".green());
 }
