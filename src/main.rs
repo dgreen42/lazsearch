@@ -20,7 +20,7 @@ mod search {
     pub fn do_nothing() {}
 }
 
-fn quick_search(top_dir: &PathBuf, search: &str) {
+fn quick_search(top_dir: &PathBuf, search: &str /*, mut counter: i32*/) {
     use search::*;
     let top_dir_s = top_dir.as_path().to_str().unwrap().to_string();
     if !top_dir.is_dir() {
@@ -52,7 +52,9 @@ fn quick_search(top_dir: &PathBuf, search: &str) {
                 }
                 None => {
                     let new_top = PathBuf::from(cur_dir);
-                    quick_search(&new_top, search);
+                    //counter += 1;
+                    //println!("{:.<1$}", "", counter as usize);
+                    quick_search(&new_top, search /*,  counter */);
                 }
             }
         }
@@ -62,6 +64,9 @@ fn quick_search(top_dir: &PathBuf, search: &str) {
 fn main() {
     let search_pat = env::args().nth(1).expect("Enter search");
     let top_dir = env::current_dir().expect("Directory not found");
-    quick_search(&top_dir, &search_pat);
+    // counter is used as a diagnostic tool to make sure search isn't stalling
+    // let mut counter = 0;
+
+    quick_search(&top_dir, &search_pat /*, counter */);
     println!("{}", "Done!".green());
 }
