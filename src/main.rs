@@ -68,7 +68,9 @@ fn quick_search(
                         for i in 0..short_path_vec.len() {
                             if i >= top_len {
                                 path.push_str(&short_path_vec[i]);
-                                path.push_str("/");
+                                if i != short_path_vec.len() - 1 {
+                                    path.push_str("/");
+                                }
                             }
                         }
                     }
